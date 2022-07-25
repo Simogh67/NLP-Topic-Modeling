@@ -9,7 +9,7 @@ It builds a topic per document model and words per topic model, modeled as Diric
 
 ### Dataset
  
-OpinRank Review Dataset Data Set is used in this repository. The data set contains user reviews of cars and hotels collected from Tripadvisor (259,000 reviews) and Edmunds (42,230 reviews).
+OpinRank Review Dataset Data Set is used in this repository [https://archive.ics.uci.edu/ml/datasets/opinrank+review+dataset]. The data set contains user reviews of cars and hotels collected from Tripadvisor (259,000 reviews) and Edmunds (42,230 reviews).
 
 An instance of hotel reviews is "Peaceful and comfortable four star hotel. The Anting Villa is a very good hotel, set amid well kept gardens on a quiet road in a leafy suburb of Shanghai. My room was comfortable, modern, and very well equipped; a comfortable bed, easy chair and footstool, and a bathroom with full bath and plenty of space for toiletries."
 
