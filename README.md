@@ -1,4 +1,4 @@
-# NLP-Topic-Modeling-
+# NLP-Topic-Modeling
 
 In this repository, we perform topic modeling by using Latent Dirichlet Allocation (LDA), which is used to classify text in a document to a particular topic. 
 It builds a topic per document model and words per topic model, modeled as Dirichlet distributions. 
