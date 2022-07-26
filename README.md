@@ -15,7 +15,7 @@ An instance of hotel reviews is "Peaceful and comfortable four star hotel. The A
 
 Also, an instance of car reviews is "Buy this car with your eyes wide open and your expectations in line - you'll be happy. Reading the previous reviews for the RDX, I wonder whether some simply chose the wrong car. Don't buy a race horse, and then complain that it eats too much or can't pull a loaded wagon. This turbocharged engine has its quirks, but drive it right and you'll be rewarded with decent mileage and good acceleration."
 
-We use part of the dataset.
+We use part of the dataset (Dubai hotel reviews and cars reviews in 2009).
 
 First, we mix some hotel review files with some car review files. Then, LDA is used for topic modeling.
 
@@ -77,7 +77,7 @@ Topic: 9
 Words: 0.022*"moon" + 0.014*"sleek" + 0.014*"burj" + 0.014*"sensor" + 0.014*"mina" + 0.013*"beauti" + 0.013*"golf" + 0.012*"fantast" + 0.011*"amaz" + 0.010*"luxuri"
 
 As we can see, we have well-diversified topics. For instance, clearly topics zero and two are about hotels, but topics 
-one and five are about cars.
+one and five are about cars. Interestingly, since we use Dubai hotel reviews, topic nine indicates that many positive reviews were about Burj al Arab hotel and its luxury facilities. This implies that our model could extract meaningful information from the dataset. 
 
 ### Evaluation
 
