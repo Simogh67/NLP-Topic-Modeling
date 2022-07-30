@@ -38,43 +38,43 @@ We will perform the following steps:
 We set the number of topics to equal to ten. Here is the result of LDA model:
 
 Topic: 0 
-Words: 0.011*"taxi" + 0.010*"busi" + 0.009*"shop" + 0.009*"mall" + 0.009*"walk" + 0.008*"citi" + 0.008*"airport" + 0.008*"small" + 0.006*"free" + 0.006*"valu"
+Words: 0.010*"fantast" + 0.009*"return" + 0.008*"amaz" + 0.007*"visit" + 0.007*"experi" + 0.007*"year" + 0.007*"holiday" + 0.006*"wonder" + 0.006*"club" + 0.006*"drink"
 
 
 Topic: 1 
-Words: 0.030*"fuel" + 0.016*"dealer" + 0.014*"problem" + 0.010*"economi" + 0.009*"tell" + 0.008*"say" + 0.007*"issu" + 0.006*"know" + 0.006*"nois" + 0.006*"leav"
+Words: 0.010*"water" + 0.008*"drink" + 0.007*"fresh" + 0.007*"build" + 0.007*"fruit" + 0.006*"bathroom" + 0.006*"bottl" + 0.006*"towel" + 0.005*"floor" + 0.005*"sensor"
 
 
 Topic: 2 
-Words: 0.017*"hill" + 0.017*"bathroom" + 0.014*"shower" + 0.012*"fresh" + 0.011*"fruit" + 0.011*"stabl" + 0.010*"reclin" + 0.010*"bath" + 0.009*"separ" + 0.008*"cold"
+Words: 0.021*"climat" + 0.018*"glove" + 0.018*"hill" + 0.015*"pedal" + 0.011*"satellit" + 0.011*"stabl" + 0.011*"watch" + 0.011*"ignit" + 0.009*"desert" + 0.008*"cadillac"
 
 
 Topic: 3 
-Words: 0.022*"kid" + 0.013*"glove" + 0.012*"adult" + 0.010*"park" + 0.010*"famili" + 0.010*"children" + 0.009*"peopl" + 0.009*"watch" + 0.008*"expens" + 0.008*"lot"
+Words: 0.014*"taxi" + 0.011*"shop" + 0.011*"busi" + 0.010*"mall" + 0.010*"walk" + 0.010*"airport" + 0.010*"citi" + 0.008*"valu" + 0.008*"minut" + 0.007*"free"
 
 
 Topic: 4 
-Words: 0.018*"control" + 0.016*"wheel" + 0.016*"power" + 0.016*"rear" + 0.015*"steer" + 0.015*"sound" + 0.015*"radio" + 0.014*"style" + 0.013*"featur" + 0.012*"exterior"
+Words: 0.023*"control" + 0.021*"radio" + 0.019*"sound" + 0.018*"rear" + 0.017*"wheel" + 0.017*"power" + 0.016*"stereo" + 0.015*"bluetooth" + 0.015*"featur" + 0.014*"light"
 
 
 Topic: 5 
-Words: 0.014*"mile" + 0.014*"mileag" + 0.013*"vehicl" + 0.012*"buy" + 0.010*"purchas" + 0.010*"road" + 0.010*"get" + 0.009*"highway" + 0.009*"power" + 0.008*"engin"
+Words: 0.012*"problem" + 0.010*"tell" + 0.009*"check" + 0.009*"say" + 0.008*"know" + 0.007*"leav" + 0.007*"thing" + 0.006*"review" + 0.006*"start" + 0.006*"tri"
 
 
 Topic: 6 
-Words: 0.163*"stereo" + 0.049*"dual" + 0.029*"minivan" + 0.019*"chrome" + 0.016*"telescop" + 0.015*"listen" + 0.013*"roof" + 0.013*"batteri" + 0.012*"cute" + 0.011*"music"
+Words: 0.146*"fuel" + 0.101*"economi" + 0.053*"perform" + 0.047*"qualiti" + 0.043*"style" + 0.032*"effici" + 0.028*"design" + 0.026*"tech" + 0.023*"quiet" + 0.023*"build"
 
 
 Topic: 7 
-Words: 0.010*"return" + 0.009*"drink" + 0.008*"fantast" + 0.007*"even" + 0.007*"visit" + 0.007*"holiday" + 0.006*"check" + 0.006*"upgrad" + 0.006*"club" + 0.006*"worth"
+Words: 0.017*"apart" + 0.014*"floor" + 0.014*"small" + 0.012*"bathroom" + 0.011*"wash" + 0.011*"kitchen" + 0.010*"famili" + 0.010*"bedroom" + 0.010*"sleep" + 0.010*"okay"
 
 
 Topic: 8 
-Words: 0.044*"brake" + 0.025*"review" + 0.023*"read" + 0.016*"experi" + 0.014*"peopl" + 0.014*"qualiti" + 0.013*"star" + 0.012*"rat" + 0.011*"amaz" + 0.010*"world"
+Words: 0.014*"steer" + 0.012*"test" + 0.012*"buy" + 0.010*"vehicl" + 0.010*"engin" + 0.010*"car" + 0.010*"toyota" + 0.009*"featur" + 0.009*"power" + 0.009*"purchas"
 
 
 Topic: 9 
-Words: 0.022*"moon" + 0.014*"sleek" + 0.014*"burj" + 0.014*"sensor" + 0.014*"mina" + 0.013*"beauti" + 0.013*"golf" + 0.012*"fantast" + 0.011*"amaz" + 0.010*"luxuri"
+Words: 0.022*"mile" + 0.019*"mileag" + 0.016*"highway" + 0.016*"road" + 0.013*"vehicl" + 0.013*"get" + 0.012*"averag" + 0.011*"trip" + 0.011*"citi" + 0.009*"model"
 
 As we can see, we have well-diversified topics. For instance, clearly topics zero and two are about hotels, but topics 
 one and five are about cars. Interestingly, since we use Dubai hotel reviews, topic nine indicates that many positive reviews were about Burj al Arab hotel and its luxury facilities. This implies that our model could extract meaningful information from the dataset. 
