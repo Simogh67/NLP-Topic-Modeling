@@ -38,6 +38,7 @@ We will perform the following steps:
 We set the number of topics to equal to ten. Here is the result of LDA model:
 
 Topic: 0 
+
 Words: 0.010*"fantast" + 0.009*"return" + 0.008*"amaz" + 0.007*"visit" + 0.007*"experi" + 0.007*"year" + 0.007*"holiday" + 0.006*"wonder" + 0.006*"club" + 0.006*"drink"
 
 
