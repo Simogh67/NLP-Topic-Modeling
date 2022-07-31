@@ -7,12 +7,16 @@ from gensim.parsing.preprocessing import STOPWORDS
 from nltk.stem import WordNetLemmatizer, SnowballStemmer
 from gensim.models.ldamodel import LdaModel
 from gensim import corpora
+from operator import itemgetter
 
 # inputs
 stemmer = SnowballStemmer("english")
 stop = STOPWORDS
 file_location_hotel = os.path.join('data', 'hotel', '*')
 file_location_car = os.path.join('data', 'car', '*')
+file_location_unseen_hotel = os.path.join('data', 'unseen_hotel', '*')
+file_location_unseen_car = os.path.join('data', 'unseen_car', '*')
+v_hotel = [0, 1, 3, 5, 7]  # contains the topics that describe hotels data
 
 # required functions
 
@@ -71,46 +75,79 @@ def get_prediction_result(prediction, name):
         print('result of prediction {}: {}'.format(name, topic))
 
 
+def get_result(prediction):
+    result = []
+    for topic in prediction:
+        result.append(topic)
+    return result[0]
+
+
+def classifier(text, dictionary, model, v_hotel):
+    bow_vector = unseen_data_tokenizer(text, dictionary)
+    prediction = model[bow_vector]
+    result = get_result(prediction)
+    topic = max(result, key=itemgetter(0))[0]
+    if topic in v_hotel:
+        c_class = 1
+    else:
+        c_class = 0
+    return c_class
+
+
+def get_classification(text, dictionary, model, v_hotel):
+    result = []
+    for t in text:
+        r = classifier(t, dictionary, model, v_hotel)
+        result.append(r)
+    return result
+
+
+def get_accurcy(y_pred_hotel, y_pred_car):
+    numerator = y_pred_hotel.count(1) + y_pred_car.count(0)
+    denominator = y_pred_hotel.count(
+        1) + y_pred_car.count(0) + y_pred_hotel.count(0)
+    +y_pred_car.count(1)
+    acc = numerator / denominator
+    return acc
+
+
 def main():
 
     # getting hotel and car data
     data_hotel = get_data(file_location_hotel, c_car=0)
     data_car = get_data(file_location_car, c_car=1)
     data = data_hotel + data_car
+
     # cleaning the data
     data = cleaner(data)
     data = stemmer_lemmetizer(data)
+
     # building dictionary and bag-of-words model
     dictionary = corpora.Dictionary(data)
     dictionary.filter_extremes(no_below=15, no_above=0.1, keep_n=100000)
     doc_term_matrix = [dictionary.doc2bow(doc) for doc in data]
+
     # LDA model
     model = LdaModel(doc_term_matrix, num_topics=10, id2word=dictionary,
                      passes=10)
+
     # getting the result of LDA model
     get_lda_result(model)
-    # getting the unseen data
-    unseen_hotel = ["small room and tiny en-suite but friendly and helpful \
-                   Location is excellent - 4 minute walk from Earls \
-                   Court tube station. Receptionists were friendly and \
-                   helpful - got us to our room at 11am and looked after \
-                   our suitcase after checkout while we went to the city."]
 
-    unseen_car = [
-        "I researched this car for a few months and decided on the Buick \
-            rather than a small Lexus or Mercedes. The new JDE Power \
-            dependability ratings make me feel really good about my selection.\
-            Cannot say anything bad about the car. Lively in tight situations \
-            while still exhibiting the Buick trademark smooth ride. Great fit \
-            and finish. Very pleased."]
-    # hotel prediction result
-    bow_vector = unseen_data_tokenizer(unseen_hotel, dictionary)
-    prediction = model[bow_vector]
-    get_prediction_result(prediction, 'hotel')
-    # car prediction result
-    bow_vector = unseen_data_tokenizer(unseen_car, dictionary)
-    prediction = model[bow_vector]
-    get_prediction_result(prediction, 'car')
+    # getting the unseen hotel data
+    df_unseen_hotel = get_data(file_location_unseen_hotel, c_car=0)
+    df_unseen_hotel = cleaner(df_unseen_hotel)
+    y_pred_hotel = get_classification(
+        df_unseen_hotel, dictionary, model, v_hotel)
+
+    # getting the unseen car data
+    df_unseen_car = get_data(file_location_unseen_car, c_car=1)
+    df_unseen_car = cleaner(df_unseen_car)
+    y_pred_car = get_classification(df_unseen_car, dictionary, model, v_hotel)
+
+    # accurcy
+    acc = get_accurcy(y_pred_hotel, y_pred_car)
+    print('the accurcy of the model:{}'.format(acc))
 
 
 if __name__ == "__main__":

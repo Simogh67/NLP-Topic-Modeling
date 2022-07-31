@@ -1,11 +1,7 @@
 # NLP-Topic-Modeling
 
-In this repository, we perform topic modeling by using Latent Dirichlet Allocation (LDA), which is used to classify text in a document to a particular topic. 
-It builds a topic per document model and words per topic model, modeled as Dirichlet distributions. 
+In this repository, by using NLP and Python, we analyze text data and extract information from a corpus of text files. 
 
-* Each document is modeled as a multinomial distribution of topics and each topic is modeled as a multinomial distribution of words.
-* LDA assumes that the every chunk of text we feed into it will contain words that are somehow related. Therefore choosing the right corpus of data is crucial. 
-* It also assumes documents are produced from a mixture of topics. Those topics then generate words based on their probability distribution. 
 
 ### Dataset
  
@@ -17,11 +13,16 @@ Also, an instance of car reviews is "Buy this car with your eyes wide open and y
 
 We use part of the dataset (Dubai hotel reviews and cars reviews in 2009).
 
-First, we mix some hotel review files with some car review files. Then, LDA is used for topic modeling.
+First, we mix the hotel review files with the car review files. 
 
-Finally, to evaluate our model, we feed two unseen reviews (a car review plus a hotel review).
+Second, by text mining, we extract information from the dataset to understand better the dataset. 
+
+Then, Latent Dirichlet Allocation (LDA) is used for topic modeling.
+
+Using our LDA model, we try to classify the unseen data, i.e., determining whether the unseen data is a car review or hotel review. 
 
 Our model classifies the unseen data i.e. predicts the unseen data belongs to which topic.
+
 
 ### Data Preprocessing 
 
@@ -33,7 +34,59 @@ We will perform the following steps:
 * Words are **lemmatized** - words in third person are changed to first person and verbs in past and future tenses are changed into present.
 * Words are **stemmed** - words are reduced to their root form.
 
-### Result
+### Text Mining 
+
+First, we look at the most frequent words in hotel review files. 
+
+![Screenshot](top-frequent-hotels.png) 
+
+As we can see, Burj, Dubai, Arabian, and Jumeriah beach are among the most frequent words. Thus, this information clearly declares that the dataset is about Dubai. In the figure, the type determines the category type of each entity (a NER model is used to plot this figure). 
+
+Next, we look at the most frequent words in car review files. 
+![Screenshot](frequent-word-cars.png) 
+
+Toyota, Ford, Hyundai, and Honda are among the most frequent words. Therefore, we can easily infer that the data is about cars without taking a glance at the files.
+
+To visualize better the data set, we plot the world cloud of each category. 
+
+The hotels world cloud:
+![Screenshot](world-cloud-hotels.png) 
+
+The cars world cloud:
+![Screenshot](world-cloud-cars.png) 
+
+### Sentiment Analysis
+
+It is nice to understand the sentiment of customers. We can find out the level of their satisfaction.
+
+One common method to do this is using Textblob, which is a python library. 
+
+The hotels sentiment analysis:
+
+![Screenshot](hotels-hist.png) 
+
+The above histogram shows that the most of customers are neutral or slightly happy with the given services by hotels in Dubai
+(Polarity 1 determines the highest level of satisfaction and -1 determines the lowest level of satisfaction).
+
+The cars sentiment analysis: 
+
+![Screenshot](cars-hist.png) 
+
+In comparison with hotels, customers are happier with car services. 
+
+### Topic-Modeling
+
+Here, based on the given dataset, we propose an unsupervised learning method to classify the unseen text data.
+
+Our classifier determines that the new file is a car review or a hotel review. 
+
+to this end, we leverage the Latent Dirichlet Allocation (LDA) model used to classify text in a document to a particular topic.
+
+It builds a topic per document model and words per topic model, modeled as Dirichlet distributions. 
+
+* Each document is modeled as a multinomial distribution of topics and each topic is modeled as a multinomial distribution of words.
+* LDA assumes that the every chunk of text we feed into it will contain words that are somehow related. Therefore choosing the right corpus of data is crucial. 
+* It also assumes documents are produced from a mixture of topics. Those topics then generate words based on their probability distribution. 
 
 We set the number of topics to equal to ten. Here is the result of LDA model:
 
@@ -86,15 +139,17 @@ Topic: 9
 
 Words: 0.022*"mile" + 0.019*"mileag" + 0.016*"highway" + 0.016*"road" + 0.013*"vehicl" + 0.013*"get" + 0.012*"averag" + 0.011*"trip" + 0.011*"citi" + 0.009*"model"
 
-As we can see, we have well-diversified topics. For instance, clearly topics zero and two are about hotels, but topics 
-one and five are about cars. Interestingly, since we use Dubai hotel reviews, topic nine indicates that many positive reviews were about Burj al Arab hotel and its luxury facilities. This implies that our model could extract meaningful information from the dataset. 
+As we can see, we have well-diversified topics. This implies that our model could extract meaningful information from the dataset. From the result, topics 0, 1, 3, 5, and 7 are about hotels, and the rest of them are about cars. 
+
 
 ### Evaluation
 
-Here, we have an unseen review i.e. "small room and tiny en-suite but friendly and helpful Location is excellent - 4 minute walk from Earls Court tube station. Receptionists were friendly and helpful - got us to our room at 11am and looked after our suitcase after checkout while we went to the city". This text clearly is about a hotel room.
+Here, we feed the unseen data to our model. 
 
-Our model predicts that with 72% chance, the text belongs to topic zero. The result is correct and shows that our model works.
+Our model gives us the probability of the text belonging to each topic.
 
-The next unseen review is about a car "I researched this car for a few months and decided on the Buick  rather than a small Lexus or Mercedes. The new JDE Power dependability ratings make me feel really good about my selection. Cannot say anything bad about the car. Lively in tight situations while still exhibiting the Buick trademark smooth ride. Great fit and finish. Very pleased."
+We pick the highest probability and based on it, the data is classified. 
 
-Our model predicts that with 83% chance, the text belongs to topic five. The result is the closest answer we have among topics and shows the merit of our model.
+Indeed, if the assigned topic is among topics 0, 1, 3, 5, and 7, the text is a hotel review. Otherwise, it is a car review.
+
+Finally, our model classifies the unseen text with 83% accuracy, which is a good result for an unsupervised approach.
